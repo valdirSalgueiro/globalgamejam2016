@@ -1,29 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BackgroundAnimator : MonoBehaviour {
+public class CloudAnimator : MonoBehaviour {
 
-    SpriteRenderer renderer;
-    float opacity = 0f;
-    float sign = 1;
+    float speed = 0f;
 
 	// Use this for initialization
 	void Start () {
-        renderer = GetComponent<SpriteRenderer>();
-        opacity = Random.Range(0f, 1f);
-	}
+        speed = Random.Range(0.01f, 0.02f);
+        transform.position = new Vector3(Random.Range(-17, 17), Random.Range(0, 3));
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        renderer.color = new Color(1f, 1f, 1f, opacity);
-
-        if (opacity >= 1.0f)
-        {
-            sign = -1;
+        transform.position += new Vector3(1,0,0)*speed;
+        if (transform.position.x > 17) {
+            speed = Random.Range(0.01f, 0.02f);
+            transform.position = new Vector3(-18, Random.Range(0, 3));
         }
-        if (opacity <= 0) {
-            sign = 1;
-        }
-        opacity += Time.deltaTime * sign;
 	}
+
 }
