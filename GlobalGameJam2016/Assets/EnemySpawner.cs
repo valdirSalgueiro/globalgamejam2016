@@ -50,17 +50,19 @@ public class EnemySpawner : MonoBehaviour
             // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
             int enemyType = Random.Range(0, 2);
 
-            switch (enemyType)
-            {
-                case 0:
-                    Instantiate(enemy, position, Quaternion.identity);
-                    yield return new WaitForSeconds(Random.Range(0, 3));
-                    break;
-                case 1:
-                    Instantiate(enemySinWave, position, Quaternion.identity);
-                    yield return new WaitForSeconds(Random.Range(0, 2));
-                    break;
-            }
+            //switch (enemyType)
+            //{
+            //    case 0:
+            //        Instantiate(enemy, position, Quaternion.identity);
+            //        yield return new WaitForSeconds(Random.Range(0, 3));
+            //        break;
+            //    case 1:
+            //        Instantiate(enemySinWave, position, Quaternion.identity);
+            //        yield return new WaitForSeconds(Random.Range(0, 2));
+            //        break;
+            //}
+            Instantiate(enemySinWave, position, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(0, 2));
 
         }
     }

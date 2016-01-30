@@ -1,18 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySinWave : MonoBehaviour {
+public class EnemySinWave : MonoBehaviour
+{
 
-    Vector3 v3Axis = new Vector3(1.0f, 1.0f, 0.0f);
+    float speed = 1f;
+    float m_degrees;
+    float m_speed = 1.0f;
+    float m_amplitude = 0.05f;
+    float m_period = 1.0f;
 
     // Use this for initialization
-    void Start () {
-        v3Axis.Normalize();
+    void Start()
+    {
     }
 
     // Update is called once per frame
-    void Update () {
-         transform.localPosition = v3Axis * Mathf.Sin(Time.time) * 2f;
+    void Update()
+    {
 
+        transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
+        // Update degrees
+        float degreesPerSecond = 360.0f / m_period;
+        m_degrees = Mathf.Repeat(m_degrees + (Time.deltaTime * degreesPerSecond), 360.0f);
+        float radians = m_degrees * Mathf.Deg2Rad;
+
+        // Offset by sin wave
+        Vector3 offset = new Vector3(m_amplitude * Mathf.Sin(radians), m_amplitude * Mathf.Sin(radians), 0.0f);
+        transform.position += offset;
+
+
+        if (Vector3.Distance(transform.position, Vector3.zero) < 1)
+        {
+            Destroy(gameObject);
+        }
     }
 }
+
+
