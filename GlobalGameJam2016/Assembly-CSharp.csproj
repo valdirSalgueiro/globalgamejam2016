@@ -47,9 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\Enemy.cs" />
      <Compile Include="Assets\EnemySinWave.cs" />
-     <Compile Include="Assets\EnemySpawner.cs" />
      <Compile Include="Assets\Fingers\Demo\DemoScript.cs" />
      <Compile Include="Assets\Fingers\Demo\EnemyScript.cs" />
+     <Compile Include="Assets\Fingers\Demo\EnemyType.cs" />
      <Compile Include="Assets\Fingers\Script\DeviceInfo.cs" />
      <Compile Include="Assets\Fingers\Script\FingersScript.cs" />
      <Compile Include="Assets\Fingers\Script\GestureRecognizer.cs" />
@@ -61,9 +61,7 @@
      <Compile Include="Assets\Fingers\Script\ScaleGestureRecognizer.cs" />
      <Compile Include="Assets\Fingers\Script\SwipeGestureRecognizer.cs" />
      <Compile Include="Assets\Fingers\Script\TapGestureRecognizer.cs" />
-     <Compile Include="Assets\Player.cs" />
-     <Compile Include="Assets\PlayerHealth.cs" />
-     <Compile Include="Assets\SwipeManager.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\Fingers\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AssemblyCSharp;
 
 namespace DigitalRubyShared
 {
@@ -76,7 +77,7 @@ namespace DigitalRubyShared
 			return o;
 		}
 
-		private void RemoveAsteroids(float screenX, float screenY, float radius)
+		private void RemoveAsteroids(float screenX, float screenY, float radius, EnemyType enemyType)
 		{
 			Vector3 pos = new Vector3(screenX, screenY, 0.0f);
 			pos = Camera.main.ScreenToWorldPoint(pos);
@@ -84,7 +85,9 @@ namespace DigitalRubyShared
 			RaycastHit2D[] hits = Physics2D.CircleCastAll(pos, radius, Vector2.zero);
 			foreach (RaycastHit2D h in hits)
 			{
-				GameObject.Destroy(h.transform.gameObject);
+				//Debug.Log ("[PEDRO] PEGOU " + h.transform.gameObject.GetComponent<EnemyScript>().enemyType.ToString() );
+				if(h.transform.gameObject.GetComponent<EnemyScript>().enemyType == enemyType)
+					GameObject.Destroy(h.transform.gameObject);
 			}
 		}
 
@@ -150,7 +153,7 @@ namespace DigitalRubyShared
 				lines.RemoveRange(0, lines.Count - 4);
 			}
 
-			RaycastHit2D[] collisions = Physics2D.CircleCastAll(startWorld, 10.0f, (endWorld - startWorld).normalized, distance);
+			RaycastHit2D[] collisions = Physics2D.CircleCastAll(startWorld, 0.25f, (endWorld - startWorld).normalized, distance);
 
 			if (collisions.Length != 0)
 			{
@@ -163,7 +166,10 @@ namespace DigitalRubyShared
 
 				foreach (RaycastHit2D h in collisions)
 				{
-					h.rigidbody.AddForceAtPosition(force, h.point);
+					if(h.transform.gameObject.GetComponent<EnemyScript>().enemyType == EnemyType.SWIPE)
+						GameObject.Destroy(h.transform.gameObject);
+					//h.rigidbody.gameObject.SetActive (false);
+					//h.rigidbody.AddForceAtPosition(force, h.point);
 				}
 			}
 		}
@@ -176,7 +182,8 @@ namespace DigitalRubyShared
 				if (t.IsValid())
 				{
 					DebugText("Tapped at {0}, {1}", t.X, t.Y);
-					CreateAsteroid(t.X, t.Y);
+					RemoveAsteroids(t.X, t.Y, 0.5f, EnemyType.SINGLE);
+					//CreateAsteroid(t.X, t.Y);
 				}
 			}
 		}
@@ -196,7 +203,7 @@ namespace DigitalRubyShared
 				if (t.IsValid())
 				{
 					DebugText("Double tapped at {0}, {1}", t.X, t.Y);
-					RemoveAsteroids(t.X, t.Y, 16.0f);
+					RemoveAsteroids (t.X, t.Y, 0.5f, EnemyType.DOUBLE);
 				}
 			}
 		}
@@ -360,8 +367,6 @@ namespace DigitalRubyShared
 					TouchCircles[index++].gameObject.SetActive(false);
 				}
 			}
-
-			//func ();
 
 			dpiLabel.text = "Dpi: " + DeviceInfo.PixelsPerInch + System.Environment.NewLine +
 				"Width: " + Screen.width + System.Environment.NewLine +
