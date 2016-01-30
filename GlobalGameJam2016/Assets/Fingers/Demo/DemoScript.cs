@@ -342,7 +342,7 @@ namespace DigitalRubyShared
 			if (Time.timeSinceLevelLoad > nextAsteroid)
 			{
 				nextAsteroid = Time.timeSinceLevelLoad + UnityEngine.Random.Range (1.0f, 4.0f);
-				CreateAsteroid(float.MinValue, float.MinValue);
+				//CreateAsteroid(float.MinValue, float.MinValue);
 			}
 
 			if (TouchCircles != null && TouchCircles.Length != 0)
@@ -359,6 +359,8 @@ namespace DigitalRubyShared
 					TouchCircles[index++].gameObject.SetActive(false);
 				}
 			}
+
+			func ();
 
 			dpiLabel.text = "Dpi: " + DeviceInfo.PixelsPerInch + System.Environment.NewLine +
 				"Width: " + Screen.width + System.Environment.NewLine +
@@ -381,5 +383,36 @@ namespace DigitalRubyShared
 			GL.End();
 			GL.PopMatrix();
 		}
+
+
+		private void func()
+		{
+			Vector3 position = Vector3.zero;
+			int side = Random.Range(0, 4);
+
+			switch (side) {
+			case 0:
+				//left
+				position = Camera.main.ViewportToWorldPoint (new Vector3 (-0.1f, Random.Range (0.0f, 1.0f), 0.0f));
+				break;
+			case 1:
+				//right
+				position = Camera.main.ViewportToWorldPoint (new Vector3 (1.1f, Random.Range (0.0f, 1.0f), 0.0f));
+				break;
+			case 2:
+				//up
+				position = Camera.main.ViewportToWorldPoint (new Vector3 (Random.Range (0.0f, 1.0f), -0.1f, 0.0f));
+				break;
+			case 3:
+				//down
+				position = Camera.main.ViewportToWorldPoint (new Vector3 (Random.Range (0.0f, 1.0f), 1.1f, 0.0f));
+				break;
+			}
+
+			Instantiate(AsteroidPrefab, position, Quaternion.identity);
+			//yield return new WaitForSeconds(Random.Range(0, 3));
+		}
+
+
 	}
 }

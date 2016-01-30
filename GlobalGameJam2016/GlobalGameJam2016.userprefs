@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="GlobalGameJam2016.CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Fingers\Demo\DemoScript.cs">
+    <Files>
+      <File FileName="Assets\EnemySpawner.cs" Line="22" Column="24" />
+      <File FileName="Assets\Fingers\Demo\DemoScript.cs" Line="345" Column="54" />
+      <File FileName="Assets\Fingers\Script\GestureRecognizer.cs" Line="436" Column="10" />
+      <File FileName="Assets\Fingers\Script\TapGestureRecognizer.cs" Line="37" Column="1" />
+      <File FileName="Assets\Fingers\Script\FingersScript.cs" Line="52" Column="1" />
+      <File FileName="Assets\Fingers\Script\DeviceInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Fingers\Demo\EnemyScript.cs" Line="23" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Pedro Sousa\Documents\globalgamejam2016\GlobalGameJam2016\Assets\Fingers\Demo\DemoScript.cs" line="390" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

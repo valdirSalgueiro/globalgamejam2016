@@ -61,8 +61,11 @@ public class EnemySpawner : MonoBehaviour
             //        yield return new WaitForSeconds(Random.Range(0, 2));
             //        break;
             //}
-            Instantiate(enemySinWave, position, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(0, 2));
+
+			Instantiate(enemy, position, Quaternion.identity);
+			yield return new WaitForSeconds(Random.Range(0, 3));
+            //Instantiate(enemySinWave, position, Quaternion.identity);
+            //yield return new WaitForSeconds(Random.Range(0, 2));
 
         }
     }
