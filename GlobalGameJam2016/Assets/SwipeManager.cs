@@ -20,10 +20,13 @@ public class SwipeManager : MonoBehaviour
     {
         //#if UNITY_ANDROID
         if (Input.touchCount > 0)
-
         {
 
             Touch touch = Input.touches[0];
+            if (touch.tapCount == 2) {
+                RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);
+
+            }
             switch (touch.phase)
             {
 
