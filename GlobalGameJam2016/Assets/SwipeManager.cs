@@ -10,27 +10,10 @@ public class SwipeManager : MonoBehaviour
 
     private Vector2 startPos;
 
-    public GameObject blue;
-    public GameObject red;
-    public GameObject green;
-    public GameObject yellow;
-
-    Renderer blueRend;
-    Renderer redRend;
-    Renderer greenRend;
-    Renderer yellowRend;
-
 
     void Start()
     {
-        blueRend = blue.GetComponent<Renderer>();
-        blueRend.enabled = false;
-        yellowRend = yellow.GetComponent<Renderer>();
-        yellowRend.enabled = false;
-        redRend = red.GetComponent<Renderer>();
-        redRend.enabled = false;
-        greenRend = green.GetComponent<Renderer>();
-        greenRend.enabled = false;
+
     }
 
     void Update()
@@ -68,12 +51,10 @@ public class SwipeManager : MonoBehaviour
 
                         if (swipeValue > 0)
                         {
-                            blueRend.enabled = true;
                             Debug.Log("cima");
                         }
                         else if (swipeValue < 0)
                         {
-                            redRend.enabled = true;
                             Debug.Log("baixo");
                         }
                     }
@@ -88,13 +69,11 @@ public class SwipeManager : MonoBehaviour
 
                         if (swipeValue > 0)
                         {
-                            yellowRend.enabled = true;
                             Debug.Log("direito");
                         }
 
                         else if (swipeValue < 0)
                         {
-                            greenRend.enabled = true;
                             Debug.Log("esquerda");
                         }
 
