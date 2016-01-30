@@ -61,6 +61,7 @@
      <Compile Include="Assets\Fingers\Script\ScaleGestureRecognizer.cs" />
      <Compile Include="Assets\Fingers\Script\SwipeGestureRecognizer.cs" />
      <Compile Include="Assets\Fingers\Script\TapGestureRecognizer.cs" />
+     <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\PlayerHealth.cs" />
      <Compile Include="Assets\SwipeManager.cs" />
      <None Include="Assets\Fingers\Readme.txt" />
