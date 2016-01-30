@@ -342,6 +342,7 @@ namespace DigitalRubyShared
 			if (Time.timeSinceLevelLoad > nextAsteroid)
 			{
 				nextAsteroid = Time.timeSinceLevelLoad + UnityEngine.Random.Range (1.0f, 4.0f);
+				func ();
 				//CreateAsteroid(float.MinValue, float.MinValue);
 			}
 
@@ -360,7 +361,7 @@ namespace DigitalRubyShared
 				}
 			}
 
-			func ();
+			//func ();
 
 			dpiLabel.text = "Dpi: " + DeviceInfo.PixelsPerInch + System.Environment.NewLine +
 				"Width: " + Screen.width + System.Environment.NewLine +

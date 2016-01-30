@@ -14,13 +14,12 @@ namespace DigitalRubyShared
 
 		private void Update ()
 		{
-			Debug.Log ("[PEDRO] teste");
 			transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
 
-			if (Vector3.Distance(transform.position, Vector3.zero) < 1 )
-			{
-				Destroy(gameObject);
-			}
+			//if (Vector3.Distance(transform.position, Vector3.zero) < 1 )
+			//{
+			//	Destroy(gameObject);
+			//}
 		}
 
 		private void OnBecameInvisible()
