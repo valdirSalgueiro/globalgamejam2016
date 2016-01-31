@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using DigitalRubyShared;
 
 public class Player : MonoBehaviour {
 	public GameObject TelaEscura;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour {
         if (col.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
+			PlayerPrefs.SetInt("High Score", DemoScript.score);
 			TelaEscura.SetActive(true);
             Debug.Log("morreu");
         }

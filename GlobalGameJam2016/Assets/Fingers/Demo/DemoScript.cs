@@ -10,7 +10,8 @@ namespace DigitalRubyShared
 	{
 		public FingersScript FingerScript;
 		public GameObject Earth;
-		public UnityEngine.UI.Text dpiLabel;
+		public UnityEngine.UI.Text currentScore;
+		public UnityEngine.UI.Text highScore;
 		public GameObject AsteroidPrefab;
 		public Material LineMaterial;
 		public GameObject[] TouchCircles;
@@ -35,7 +36,7 @@ namespace DigitalRubyShared
 		private float enemySpeed = 1.5f;
 		private int enemyCount = 0;
 
-		private int score;
+		public static int score;
 
 		private readonly List<Vector3> lines = new List<Vector3>();
 
@@ -338,7 +339,8 @@ namespace DigitalRubyShared
 		private void Start()
 		{
 			asteroids = Resources.LoadAll<Sprite>("Asteroids");
-
+			score = 0;
+			highScore.text = PlayerPrefs.GetInt("High Score").ToString();
 			originalCamPos = Camera.main.transform.position;
 
 			CreateTapGesture();
@@ -387,7 +389,7 @@ namespace DigitalRubyShared
 				Shake ();
 			}
 
-			dpiLabel.text = score.ToString();
+			currentScore.text = score.ToString();
 		}
 
 		private void OnRenderObject()
