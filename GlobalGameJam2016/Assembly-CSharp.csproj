@@ -56,6 +56,7 @@
      <Compile Include="Assets\Fingers\Demo\EnemyType.cs" />
      <Compile Include="Assets\Fingers\Demo\Pause.cs" />
      <Compile Include="Assets\Fingers\Demo\Restart.cs" />
+     <Compile Include="Assets\Fingers\Demo\Ritual.cs" />
      <Compile Include="Assets\Fingers\Demo\TutorialScript.cs" />
      <Compile Include="Assets\Fingers\Script\DeviceInfo.cs" />
      <Compile Include="Assets\Fingers\Script\FingersScript.cs" />
@@ -70,12 +71,28 @@
      <Compile Include="Assets\Fingers\Script\TapGestureRecognizer.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <None Include="Assets\DOTween\DOTween43.xml" />
+     <None Include="Assets\DOTween\DOTween46.xml" />
+     <None Include="Assets\DOTween\DOTween50.xml" />
+     <None Include="Assets\DOTween\readme.txt" />
      <None Include="Assets\Fingers\Readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>C:/Users/Pedro Sousa/Documents/globalgamejam2016/GlobalGameJam2016/Assets/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>C:/Users/Pedro Sousa/Documents/globalgamejam2016/GlobalGameJam2016/Assets/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>C:/Users/Pedro Sousa/Documents/globalgamejam2016/GlobalGameJam2016/Assets/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>C:/Users/Pedro Sousa/Documents/globalgamejam2016/GlobalGameJam2016/Assets/DOTween/DOTween50.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

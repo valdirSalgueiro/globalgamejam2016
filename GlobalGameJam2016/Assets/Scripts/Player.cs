@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		this.gameObject.transform.Rotate(0,0,-Time.deltaTime * 3);
 	}
 
 	public void Reiniciar()
@@ -26,7 +26,9 @@ public class Player : MonoBehaviour {
         if (col.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
-			PlayerPrefs.SetInt("High Score", DemoScript.score);
+			int hs = PlayerPrefs.GetInt ("High Score");
+			if(DemoScript.score > hs)
+				PlayerPrefs.SetInt("High Score", DemoScript.score);
 			TelaEscura.SetActive(true);
             Debug.Log("morreu");
         }

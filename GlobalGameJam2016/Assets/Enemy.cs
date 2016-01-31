@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour {
 
@@ -12,7 +13,6 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
-
         if (Vector3.Distance(transform.position, Vector3.zero) < 1 )
         {
             Destroy(gameObject);

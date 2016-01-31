@@ -13,6 +13,7 @@ namespace DigitalRubyShared
 		public UnityEngine.UI.Text currentScore;
 		public UnityEngine.UI.Text highScore;
 		public GameObject AsteroidPrefab;
+		public GameObject RitualPrefab;
 		public Material LineMaterial;
 		public GameObject[] TouchCircles;
 
@@ -33,8 +34,9 @@ namespace DigitalRubyShared
 		Vector3 originalCamPos;
 		float elapsed = 0.0f;
 
-		private float enemySpeed = 1.5f;
+		private float enemySpeed = 2f;
 		private int enemyCount = 0;
+		private float spawnHelper = 3f;
 
 		public static int score;
 
@@ -89,7 +91,6 @@ namespace DigitalRubyShared
 
 		private void RemoveAsteroids(float screenX, float screenY, float radius, EnemyType enemyType)
 		{
-			shaking = true;
 			Vector3 pos = new Vector3(screenX, screenY, 0.0f);
 			pos = Camera.main.ScreenToWorldPoint(pos);
 
@@ -98,8 +99,11 @@ namespace DigitalRubyShared
 			{
 				//Debug.Log ("[PEDRO] PEGOU " + h.transform.gameObject.GetComponent<EnemyScript>().enemyType.ToString() );
 				if (h.transform.gameObject.GetComponent<EnemyScript> ().enemyType == enemyType) {
+					//h.transform.gameObject.GetComponent<EnemyScript> ().bounce ();
+					shaking = true;
 					GameObject.Destroy (h.transform.gameObject);
 					score++;
+					GameObject o = (GameObject) Instantiate(RitualPrefab, h.transform.position, Quaternion.identity);
 				}
 			}
 		}
@@ -180,6 +184,7 @@ namespace DigitalRubyShared
 				foreach (RaycastHit2D h in collisions)
 				{
 					if (h.transform.gameObject.GetComponent<EnemyScript> ().enemyType == EnemyType.SWIPE) {
+						shaking = true;
 						GameObject.Destroy (h.transform.gameObject);
 						score++;
 					}
@@ -340,6 +345,7 @@ namespace DigitalRubyShared
 		{
 			asteroids = Resources.LoadAll<Sprite>("Asteroids");
 			score = 0;
+			//Screen.currentResolution.height;
 			highScore.text = PlayerPrefs.GetInt("High Score").ToString();
 			originalCamPos = Camera.main.transform.position;
 
@@ -364,8 +370,9 @@ namespace DigitalRubyShared
 		{
 			if (Time.timeSinceLevelLoad > nextAsteroid)
 			{
-				nextAsteroid = Time.timeSinceLevelLoad + UnityEngine.Random.Range (1.0f, 4.0f);
-				func ();
+				nextAsteroid = Time.timeSinceLevelLoad + spawnHelper;
+				//nextAsteroid = Time.timeSinceLevelLoad + UnityEngine.Random.Range (1.0f, 4.0f);
+				spawnEnemy ();
 				//CreateAsteroid(float.MinValue, float.MinValue);
 			}
 
@@ -409,7 +416,7 @@ namespace DigitalRubyShared
 		}
 
 
-		private void func()
+		private void spawnEnemy()
 		{
 			Vector3 position = Vector3.zero;
 			int side = Random.Range(0, 4);
@@ -436,8 +443,15 @@ namespace DigitalRubyShared
 			GameObject o = (GameObject) Instantiate(AsteroidPrefab, position, Quaternion.identity);
 			o.GetComponent<EnemyScript> ().speed = enemySpeed;
 			enemyCount++;
-			if (enemyCount % 5 == 0)
-				enemySpeed *= 1.5f;
+			if (enemyCount % 5 == 0) {
+				if (spawnHelper > 1f) {
+					spawnHelper -= 0.5f;
+					Debug.Log ("[PEDRO] spawn" + spawnHelper.ToString ());
+				} else {
+					spawnEnemy ();
+				}
+				//enemySpeed *= 1.5f;
+			}
 			//yield return new WaitForSeconds(Random.Range(0, 3));
 		}
 

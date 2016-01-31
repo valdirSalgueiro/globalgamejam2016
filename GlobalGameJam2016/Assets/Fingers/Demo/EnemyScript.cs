@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using AssemblyCSharp;
+using DG.Tweening;
 
 namespace DigitalRubyShared
 {
@@ -36,6 +37,7 @@ namespace DigitalRubyShared
 				dir.Normalize ();
 				float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 				transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward) * Quaternion.Euler (0, 0, -90);
+
 //			} else {
 				
 //				transform.position = Vector3.MoveTowards (transform.position, Vector3.zero, speed * Time.deltaTime);
@@ -82,6 +84,16 @@ namespace DigitalRubyShared
 				return EnemyType.SWIPE;
 				break;
 			}
+		}
+
+		public void bounce()
+		{
+			transform.localScale = Vector3.one * 0.1f;
+			//if (Input.GetKeyDown (KeyCode.A))
+			//transform.DOScale(transform.localScale* 1.2f, 0.1f).SetEase(Ease.InOutQuad).SetLoops(4,LoopType.Yoyo);
+			//while(transform.DOScale(transform.localScale* 0.7f, 0.1f).SetEase(Ease.InOutQuad).SetLoops(3,LoopType.Yoyo).IsPlaying());
+			//WaitForSeconds (StartCoroutine(GameObject.Destroy(this.gameObject)));
+			//GameObject.Destroy(this.gameObject);
 		}
 
 		private void OnBecameInvisible()
