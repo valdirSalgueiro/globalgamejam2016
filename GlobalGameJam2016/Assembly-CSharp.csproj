@@ -54,6 +54,8 @@
      <Compile Include="Assets\Fingers\Demo\EnemyForTutorial.cs" />
      <Compile Include="Assets\Fingers\Demo\EnemyScript.cs" />
      <Compile Include="Assets\Fingers\Demo\EnemyType.cs" />
+     <Compile Include="Assets\Fingers\Demo\Pause.cs" />
+     <Compile Include="Assets\Fingers\Demo\Restart.cs" />
      <Compile Include="Assets\Fingers\Demo\TutorialScript.cs" />
      <Compile Include="Assets\Fingers\Script\DeviceInfo.cs" />
      <Compile Include="Assets\Fingers\Script\FingersScript.cs" />
