@@ -6,6 +6,7 @@ using AssemblyCSharp;
 
 namespace DigitalRubyShared
 {
+	[RequireComponent(typeof(AudioSource))]
 	public class DemoScript : MonoBehaviour
 	{
 		public FingersScript FingerScript;
@@ -100,6 +101,10 @@ namespace DigitalRubyShared
 				//Debug.Log ("[PEDRO] PEGOU " + h.transform.gameObject.GetComponent<EnemyScript>().enemyType.ToString() );
 				if (h.transform.gameObject.GetComponent<EnemyScript> ().enemyType == enemyType) {
 					//h.transform.gameObject.GetComponent<EnemyScript> ().bounce ();
+
+					AudioSource audio = GetComponent<AudioSource>();
+					audio.Play();
+					audio.Play(44100);
 					shaking = true;
 					GameObject.Destroy (h.transform.gameObject);
 					score++;
@@ -184,6 +189,9 @@ namespace DigitalRubyShared
 				foreach (RaycastHit2D h in collisions)
 				{
 					if (h.transform.gameObject.GetComponent<EnemyScript> ().enemyType == EnemyType.SWIPE) {
+						AudioSource audio = GetComponent<AudioSource>();
+						audio.Play();
+						audio.Play(44100);
 						shaking = true;
 						GameObject.Destroy (h.transform.gameObject);
 						score++;
