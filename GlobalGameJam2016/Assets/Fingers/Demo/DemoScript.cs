@@ -28,6 +28,10 @@ namespace DigitalRubyShared
 		private float nextAsteroid = float.MinValue;
 		private GameObject draggingAsteroid;
 
+		private bool shaking = false;
+		Vector3 originalCamPos;
+		float elapsed = 0.0f;
+
 		private readonly List<Vector3> lines = new List<Vector3>();
 
 		private GestureTouch FirstTouch(ICollection<GestureTouch> touches)
@@ -79,6 +83,7 @@ namespace DigitalRubyShared
 
 		private void RemoveAsteroids(float screenX, float screenY, float radius, EnemyType enemyType)
 		{
+			shaking = true;
 			Vector3 pos = new Vector3(screenX, screenY, 0.0f);
 			pos = Camera.main.ScreenToWorldPoint(pos);
 
@@ -327,6 +332,8 @@ namespace DigitalRubyShared
 		{
 			asteroids = Resources.LoadAll<Sprite>("Asteroids");
 
+			originalCamPos = Camera.main.transform.position;
+
 			CreateTapGesture();
 			CreateDoubleTapGesture();
 			CreateSwipeGesture();
@@ -366,6 +373,11 @@ namespace DigitalRubyShared
 				{
 					TouchCircles[index++].gameObject.SetActive(false);
 				}
+			}
+
+			if (shaking) {
+				Handheld.Vibrate ();
+				Shake ();
 			}
 
 			dpiLabel.text = "Dpi: " + DeviceInfo.PixelsPerInch + System.Environment.NewLine +
@@ -419,6 +431,36 @@ namespace DigitalRubyShared
 			//yield return new WaitForSeconds(Random.Range(0, 3));
 		}
 
+		public void Shake() {
 
+			float duration = 0.5f;
+
+			//Vector3 originalCamPos = Camera.main.transform.position;
+
+			//while (elapsed < duration) {
+
+				elapsed += Time.deltaTime;          
+
+				float percentComplete = elapsed / duration;         
+				float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+				// map value to [-1, 1]
+				float x = Random.value * 2f - 1.0f;
+				float y = Random.value * 2f - 1.0f;
+				x *= 0.06f * damper;
+				y *= 0.06f * damper;
+
+				//Debug.Log ("[PEDRO] Original: ");
+				Camera.main.transform.position = new Vector3(x, originalCamPos.y, originalCamPos.z);
+
+			//}
+
+			Debug.Log ("[PEDRO] SHAKE " + elapsed.ToString() + " - " + duration.ToString());
+			if (elapsed > duration) {
+				elapsed = 0.0f;
+				shaking = false;
+				Camera.main.transform.position = originalCamPos;
+			}
+		}
 	}
 }

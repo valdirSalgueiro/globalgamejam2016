@@ -7,7 +7,7 @@ public class CloudAnimator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        speed = Random.Range(0.01f, 0.02f);
+        speed = Random.Range(0.005f, 0.01f);
         transform.position = new Vector3(Random.Range(-17, 17), Random.Range(0, 3));
     }
 	

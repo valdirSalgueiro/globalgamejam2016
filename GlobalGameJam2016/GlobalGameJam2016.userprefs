@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Fingers\Demo\EnemyScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Fingers\Demo\DemoScript.cs">
     <Files>
-      <File FileName="Assets\Fingers\Demo\DemoScript.cs" Line="152" Column="5" />
+      <File FileName="Assets\Fingers\Demo\DemoScript.cs" Line="316" Column="5" />
       <File FileName="Assets\Fingers\Script\GestureRecognizer.cs" Line="436" Column="10" />
       <File FileName="Assets\Fingers\Script\TapGestureRecognizer.cs" Line="37" Column="1" />
       <File FileName="Assets\Fingers\Script\DeviceInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets\Fingers\Demo\EnemyScript.cs" Line="24" Column="4" />
-      <File FileName="Assets\Fingers\Script\FingersScript.cs" Line="52" Column="1" />
+      <File FileName="Assets\Fingers\Demo\EnemyScript.cs" Line="15" Column="33" />
+      <File FileName="Assets\Fingers\Script\FingersScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CameraShake.cs" Line="10" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

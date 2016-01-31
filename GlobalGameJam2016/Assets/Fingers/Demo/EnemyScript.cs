@@ -9,6 +9,9 @@ namespace DigitalRubyShared
 		public float speed = 1.0f;
 		public EnemyType enemyType;
 		public Transform target;
+		public Sprite nav_tap;
+		public Sprite nav_doubletap;
+		public Sprite nav_swipe;
 
 		private void Start ()
 		{
@@ -36,15 +39,15 @@ namespace DigitalRubyShared
 
 			switch (r) {
 			case 0:
-				this.gameObject.GetComponent<SpriteRenderer> ().color = Color.red;
+				this.gameObject.GetComponent<SpriteRenderer> ().sprite = nav_tap;
 				return EnemyType.SINGLE;
 				break;
 			case 1:
-				this.gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
+				this.gameObject.GetComponent<SpriteRenderer> ().sprite = nav_doubletap;
 				return EnemyType.DOUBLE;
 				break;
 			case 2:
-				this.gameObject.GetComponent<SpriteRenderer> ().color = Color.yellow;
+				this.gameObject.GetComponent<SpriteRenderer> ().sprite = nav_swipe;
 				return EnemyType.SWIPE;
 				break;
 			default:
