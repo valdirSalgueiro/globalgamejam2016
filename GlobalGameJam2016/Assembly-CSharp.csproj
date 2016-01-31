@@ -46,12 +46,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BackgroundAnimator.cs" />
+     <Compile Include="Assets\Button.cs" />
      <Compile Include="Assets\CloudAnimator.cs" />
      <Compile Include="Assets\Enemy.cs" />
      <Compile Include="Assets\EnemySinWave.cs" />
      <Compile Include="Assets\Fingers\Demo\DemoScript.cs" />
+     <Compile Include="Assets\Fingers\Demo\EnemyForTutorial.cs" />
      <Compile Include="Assets\Fingers\Demo\EnemyScript.cs" />
      <Compile Include="Assets\Fingers\Demo\EnemyType.cs" />
+     <Compile Include="Assets\Fingers\Demo\TutorialScript.cs" />
      <Compile Include="Assets\Fingers\Script\DeviceInfo.cs" />
      <Compile Include="Assets\Fingers\Script\FingersScript.cs" />
      <Compile Include="Assets\Fingers\Script\GestureRecognizer.cs" />

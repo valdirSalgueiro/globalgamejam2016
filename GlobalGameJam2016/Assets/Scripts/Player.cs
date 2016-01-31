@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour {
         {
             Destroy(gameObject);
             Debug.Log("morreu");
+			SceneManager.LoadScene("DemoScene");
         }
     }
 }

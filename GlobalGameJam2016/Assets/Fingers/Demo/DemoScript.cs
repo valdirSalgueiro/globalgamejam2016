@@ -32,6 +32,11 @@ namespace DigitalRubyShared
 		Vector3 originalCamPos;
 		float elapsed = 0.0f;
 
+		private float enemySpeed = 1.5f;
+		private int enemyCount = 0;
+
+		private int score;
+
 		private readonly List<Vector3> lines = new List<Vector3>();
 
 		private GestureTouch FirstTouch(ICollection<GestureTouch> touches)
@@ -91,8 +96,10 @@ namespace DigitalRubyShared
 			foreach (RaycastHit2D h in hits)
 			{
 				//Debug.Log ("[PEDRO] PEGOU " + h.transform.gameObject.GetComponent<EnemyScript>().enemyType.ToString() );
-				if(h.transform.gameObject.GetComponent<EnemyScript>().enemyType == enemyType)
-					GameObject.Destroy(h.transform.gameObject);
+				if (h.transform.gameObject.GetComponent<EnemyScript> ().enemyType == enemyType) {
+					GameObject.Destroy (h.transform.gameObject);
+					score++;
+				}
 			}
 		}
 
@@ -171,10 +178,10 @@ namespace DigitalRubyShared
 
 				foreach (RaycastHit2D h in collisions)
 				{
-					if(h.transform.gameObject.GetComponent<EnemyScript>().enemyType == EnemyType.SWIPE)
-						GameObject.Destroy(h.transform.gameObject);
-					//h.rigidbody.gameObject.SetActive (false);
-					//h.rigidbody.AddForceAtPosition(force, h.point);
+					if (h.transform.gameObject.GetComponent<EnemyScript> ().enemyType == EnemyType.SWIPE) {
+						GameObject.Destroy (h.transform.gameObject);
+						score++;
+					}
 				}
 			}
 		}
@@ -380,10 +387,7 @@ namespace DigitalRubyShared
 				Shake ();
 			}
 
-			dpiLabel.text = "Dpi: " + DeviceInfo.PixelsPerInch + System.Environment.NewLine +
-				"Width: " + Screen.width + System.Environment.NewLine +
-				"Height: " + Screen.height + System.Environment.NewLine +
-				"Touches: " + Input.touchCount + System.Environment.NewLine;
+			dpiLabel.text = score.ToString();
 		}
 
 		private void OnRenderObject()
@@ -427,7 +431,11 @@ namespace DigitalRubyShared
 				break;
 			}
 
-			Instantiate(AsteroidPrefab, position, Quaternion.identity);
+			GameObject o = (GameObject) Instantiate(AsteroidPrefab, position, Quaternion.identity);
+			o.GetComponent<EnemyScript> ().speed = enemySpeed;
+			enemyCount++;
+			if (enemyCount % 5 == 0)
+				enemySpeed *= 1.5f;
 			//yield return new WaitForSeconds(Random.Range(0, 3));
 		}
 
